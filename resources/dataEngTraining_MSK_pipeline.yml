@@ -1,0 +1,12 @@
+# The main pipeline for dataEngTraining_MSK
+resources:
+  pipelines:
+    dataEngTraining_MSK_pipeline:
+      name: dataEngTraining_MSK_pipeline
+      target: dataEngTraining_MSK_${bundle.environment}
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: /Workspace/${workspace.file_path}/src
