@@ -6,7 +6,7 @@ resources:
       target: dataEngTraining_MSK_${bundle.environment}
       libraries:
         - notebook:
-            path: ../src/dlt_pipeline.ipynb
+            path: ../src/dlt_pipeline.py
 
       configuration:
         bundle.sourcePath: /Workspace/${workspace.file_path}/src
