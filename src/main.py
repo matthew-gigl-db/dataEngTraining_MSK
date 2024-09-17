@@ -238,7 +238,7 @@ class IngestionDLT:
     ### Load DDL Files From Workspace 
     def load_ddl_files(self, ddl_df: pd.DataFrame):
         @dlt.table(
-            name = "synthea_silver_schemas"
+            name = "silver_schemas"
             ,comment = "Reference table containing the schema definitions for the Synthea csv file datasets."
             ,temporary = False
             ,table_properties = {
@@ -252,7 +252,7 @@ class IngestionDLT:
         @dlt.table(
             name = f"{table_name}_stage"
             ,comment = "Staging Table for data to stage into silver. Normally temporary."
-            ,temporary = False
+            ,temporary = True
             ,table_properties = {
             "pipelines.autoOptimize.managed" : "true"
             ,"pipelines.reset.allowed" : "true"}
@@ -267,7 +267,7 @@ class IngestionDLT:
 
   
     ## stream changes into target silver table
-    def stream_silver(self, bronze_table: str, table_name: str, sequence_by: str, keys: list, schema: str = None):
+    def stream_silver(self, bronze_table: str, table_name: str, sequence_by: str, keys: list, schema: str = None, expect_all = None, expect_all_or_drop = None, expect_all_or_fail = None):
         # create the target table
         dlt.create_streaming_table(
             name = table_name
@@ -279,9 +279,10 @@ class IngestionDLT:
             ,partition_cols = None
             # ,path="<storage-location-path>"
             # ,schema = ddl
-            # ,expect_all = {"<key>" : "<value", "<key" : "<value>"}
-            # ,expect_all_or_drop = {"<key>" : "<value", "<key" : "<value>"}
+            ,expect_all = expect_all
+            ,expect_all_or_drop = expect_all_or_drop
             # ,expect_all_or_fail = {"<key>" : "<value", "<key" : "<value>"}
+            ,expect_all_or_fail = expect_all_or_fail
         )
 
         # now apply changes 
