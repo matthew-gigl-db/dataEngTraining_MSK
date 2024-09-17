@@ -41,8 +41,12 @@ ddl_ref
 for i in ddl_ref:
   table_name = i["table_name"]
   ddl = i["ddl"]
+  expect_all_or_drop = None
+  if table_name == "encounters": 
+    expect_all_or_drop = {"valid patient_id ": "patient_id IS NOT NULL"}
   Pipeline.stage_silver(
     bronze_table = f"{catalog}.synthea.{table_name}_bronze"
     ,table_name = table_name
     ,ddl = ddl
+    ,expect_all_or_drop = expect_all_or_drop
   )
