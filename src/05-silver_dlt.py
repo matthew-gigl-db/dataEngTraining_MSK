@@ -3,14 +3,14 @@ import dlt
 
 # COMMAND ----------
 
-# used for active development, but not run during DLT execution, use DLT configurations instead
-dbutils.widgets.text(name = "catalog", defaultValue="", label="catalog")
-dbutils.widgets.text("bundle.sourcePath", ".", "bundle.sourcePath")
-dbutils.widgets.text("bundle.fixturePath", "../fixtures", "bundle.fixturePath")
+# # used for active development, but not run during DLT execution, use DLT configurations instead
+# dbutils.widgets.text(name = "catalog", defaultValue="", label="catalog")
+# dbutils.widgets.text("bundle.sourcePath", ".", "bundle.sourcePath")
+# dbutils.widgets.text("bundle.fixturePath", "../fixtures", "bundle.fixturePath")
 
-spark.conf.set("bundle.catalog", dbutils.widgets.get(name = "catalog"))
-spark.conf.set("bundle.sourcePath", dbutils.widgets.get(name = "bundle.sourcePath"))
-spark.conf.set("bundle.fixturePath", dbutils.widgets.get(name = "bundle.fixturePath"))
+# spark.conf.set("bundle.catalog", dbutils.widgets.get(name = "catalog"))
+# spark.conf.set("bundle.sourcePath", dbutils.widgets.get(name = "bundle.sourcePath"))
+# spark.conf.set("bundle.fixturePath", dbutils.widgets.get(name = "bundle.fixturePath"))
 
 # COMMAND ----------
 
