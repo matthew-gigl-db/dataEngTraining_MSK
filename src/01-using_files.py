@@ -140,6 +140,12 @@ display(df)
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ## Describe the Returned Data Model
+# MAGIC ***
+
+# COMMAND ----------
+
 # MAGIC %sql
 # MAGIC describe select * from read_files(
 # MAGIC   "/Volumes/mgiglia/synthea/landing/patients/2024_09_14T19_14_42Z_patients.csv"
@@ -147,6 +153,12 @@ display(df)
 # MAGIC   ,delimiter => ','
 # MAGIC   ,header => true
 # MAGIC )
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Provide Schema Hints
+# MAGIC ***
 
 # COMMAND ----------
 
