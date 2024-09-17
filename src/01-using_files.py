@@ -226,11 +226,15 @@ patients_schema = StructType([
 
 # COMMAND ----------
 
+from pyspark.sql.functions import col
+
 df = spark.read.format("csv") \
     .option("header", "true") \
     .option("delimiter", ",") \
     .option("escape", '"') \
     .schema(patients_schema) \
     .load(f"/Volumes/{catalog_use}/synthea/landing/patients/")
+
+df = df.withColumn("metadata", col("_metadata"))
 
 display(df)
