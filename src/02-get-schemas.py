@@ -50,7 +50,7 @@ schema_dict = {filename: get_schema_struct(directory_name=filename, volume_path=
 
 # COMMAND ----------
 
-schema_dict
+print(schema_dict)
 
 # COMMAND ----------
 
@@ -93,17 +93,13 @@ def get_schema_from_llm(prompt):
 
 # COMMAND ----------
 
-result = (get_schema_from_llm(str(schema_dict)))
+# result = (get_schema_from_llm(str(schema_dict)))
 
 # COMMAND ----------
 
 print(result)
 
 # COMMAND ----------
-
-import inflect
-
-p = inflect.engine()
 
 schemas = {
     'allergies': "StructType([StructField('START', DateType(), True), StructField('STOP', StringType(), True), StructField('PATIENT', StringType(), True), StructField('ENCOUNTER', StringType(), True), StructField('CODE', LongType(), True), StructField('SYSTEM', StringType(), True), StructField('DESCRIPTION', StringType(), True), StructField('TYPE', StringType(), True), StructField('CATEGORY', StringType(), True), StructField('REACTION1', IntegerType(), True), StructField('DESCRIPTION1', StringType(), True), StructField('SEVERITY1', StringType(), True), StructField('REACTION2', IntegerType(), True), StructField('DESCRIPTION2', StringType(), True), StructField('SEVERITY2', StringType(), True), StructField('_rescued_data', StringType(), True)])",
