@@ -28,3 +28,13 @@ targets:
         level: CAN_MANAGE
     run_as:
       user_name: odl_instructor_1452233@databrickslabs.com
+
+variables:
+  catalog:
+    description: The catalog where the schemas will be created.
+    default: resources
+  sourcePath:
+    default: /Workspace${workspace.file_path}/src
+  fixturePath: 
+    default: /Workspace${workspace.file_path}/fixtures
+
