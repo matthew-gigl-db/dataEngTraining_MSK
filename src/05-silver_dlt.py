@@ -70,7 +70,7 @@ for i in ddl_ref:
   elif table_name == "claims_transactions":
     expect_all = {'positive payments': "payments >= 0"}
   elif table_name == "medications": 
-    expect_all = {'postive total_cost": "total_cost >= 0'}
+    expect_all = {"postive total_cost": "total_cost >= 0"}
   Pipeline.stream_silver(
     bronze_table = f"{catalog_use}.synthea.{table_name}_bronze"
     ,table_name = table_name
