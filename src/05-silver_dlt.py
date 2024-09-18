@@ -63,12 +63,19 @@ for i in ddl_ref:
 for i in ddl_ref:
   table_name = i["table_name"]
   expect_all_or_drop = None
+  expect_all = None
   if table_name == "encounters": 
     expect_all_or_drop = {"valid patient_id ": "patient_id IS NOT NULL"}
+    expect_all = {'positive payer_coverage': "payer_coverage >= 0"}
+  elif table_name == "claims_transactions":
+    expect_all = {'positive payments': "payments >= 0"}
+  elif table_name == "medications": 
+    expect_all = {'postive total_cost": "total_cost >= 0'}
   Pipeline.stream_silver(
     bronze_table = f"{catalog_use}.synthea.{table_name}_bronze"
     ,table_name = table_name
     ,sequence_by = "sequence_by"
     ,keys = getattr(keys, table_name)
     ,expect_all_or_drop = expect_all_or_drop
+    ,expect_all = expect_all
   )
