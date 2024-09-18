@@ -56,7 +56,7 @@ ddl_files = main.retrieve_ddl_files(
 # COMMAND ----------
 
 catalog_use = spark.conf.get("bundle.catalog")
-volume_path = f"/Volumes/{catalog_use}/synthea/landing"
+volume_path = f"/Volumes/resources/synthea/landing"
 print(f"""
     volume_path = {volume_path}
 """)

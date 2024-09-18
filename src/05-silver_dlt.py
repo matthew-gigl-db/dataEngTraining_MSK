@@ -7,10 +7,12 @@ import dlt
 # dbutils.widgets.text(name = "catalog", defaultValue="", label="catalog")
 # dbutils.widgets.text("bundle.sourcePath", ".", "bundle.sourcePath")
 # dbutils.widgets.text("bundle.fixturePath", "../fixtures", "bundle.fixturePath")
+# dbutils.widgets.text("bundle.volumePath", "../fixtures", "bundle.volumePath")
 
 # spark.conf.set("bundle.catalog", dbutils.widgets.get(name = "catalog"))
 # spark.conf.set("bundle.sourcePath", dbutils.widgets.get(name = "bundle.sourcePath"))
 # spark.conf.set("bundle.fixturePath", dbutils.widgets.get(name = "bundle.fixturePath"))
+# spark.conf.set("bundle.volumePath", dbutils.widgets.get(name = "bundle.volumePath"))
 
 # COMMAND ----------
 
@@ -22,7 +24,7 @@ import main
 # COMMAND ----------
 
 catalog_use = spark.conf.get("bundle.catalog")
-volume_path = f"/Volumes/{catalog_use}/synthea/landing"
+volume_path = f"/Volumes/resources/synthea/landing"
 print(f"""
     volume_path = {volume_path}
 """)
