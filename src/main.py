@@ -8,7 +8,7 @@ from typing import Callable
 import os
 import pandas as pd
 from databricks.sdk import WorkspaceClient
-from databricks.sdk.runtime import *
+from databricks.sdk.runtime import * 
 
 ##########################
 ####### operations #######
