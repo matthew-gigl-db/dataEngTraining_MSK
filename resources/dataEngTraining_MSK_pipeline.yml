@@ -1,12 +1,71 @@
 # The main pipeline for dataEngTraining_MSK
 resources:
   pipelines:
-    dataEngTraining_MSK_pipeline:
-      name: dataEngTraining_MSK_pipeline
-      target: dataEngTraining_MSK_${bundle.environment}
+    pipeline_msk_training_dlt_bronze:
+      name: msk-training-dlt-bronze
+      configuration:
+        bundle.catalog: mgiglia
+        bundle.sourcePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/src
+        bundle.fixturePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/fixtures
+      clusters:
+        - label: default
+          node_type_id: i3.xlarge
+          autoscale:
+            min_workers: 1
+            max_workers: 5
+            mode: ENHANCED
       libraries:
         - notebook:
-            path: ../src/dlt_pipeline.py
+            path: /Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/src/03-bronze_ingestion_dlt
+      target: synthea
+      development: true
+      photon: true
+      channel: PREVIEW
+      catalog: mgiglia
+      data_sampling: false
 
+    pipeline_msk_training_dlt_ddl:
+      name: msk-training-dlt-ddl
       configuration:
-        bundle.sourcePath: /Workspace/${workspace.file_path}/src
+        bundle.catalog: mgiglia
+        bundle.sourcePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/src
+        bundle.fixturePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/fixtures
+      clusters:
+        - label: default
+          autoscale:
+            min_workers: 1
+            max_workers: 5
+            mode: ENHANCED
+      libraries:
+        - notebook:
+            path: /Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/src/04-load-schemas
+      target: synthea
+      development: true
+      photon: true
+      channel: PREVIEW
+      catalog: mgiglia
+      data_sampling: false
+
+    pipeline_msk_training_dlt_silver:
+      name: msk-training-dlt-silver
+      configuration:
+        bundle.catalog: mgiglia
+        bundle.sourcePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/src
+        bundle.fixturePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/fixtures
+      clusters:
+        - label: default
+          autoscale:
+            min_workers: 1
+            max_workers: 5
+            mode: ENHANCED
+      libraries:
+        - notebook:
+            path: /Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/src/05-silver_dlt
+      target: synthea
+      development: true
+      photon: true
+      channel: PREVIEW
+      catalog: mgiglia
+      data_sampling: false
+
+
