@@ -4,7 +4,7 @@
 # MAGIC
 # MAGIC ***
 # MAGIC
-# MAGIC This is our first notebook, which we'll use to setup our Catalog, Schema, and Volume to Use for the Training.  
+# MAGIC This is our first notebook, which we'll use to setup our Catalog, Schema, and Volume to Use for the **Training**.  
 # MAGIC
 # MAGIC It's always a best practice to start each notebook with a Markdown cell describing the notebook's purpose, and to list the steps that will be completed.  This is helpful later for the Ops Teams that will be monitoring your notebooks as production jobs in the future, or for folks that may need to maintain your work later.  
 # MAGIC
@@ -18,6 +18,22 @@
 # MAGIC ![MSKCC-logo](/Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/fixtures/images/MSKCC_Logo.jpg)
 # MAGIC
 # MAGIC Markdown allows for a much richer experience than just comments alone.  
+
+# COMMAND ----------
+
+class MyClass:
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
+
+    def get_name(self):
+        return self.name
+
+    def get_value(self):
+        return self.value
+
+    def __repr__(self):
+        return f"MyClass(name={self.name}, value={self.value})"
 
 # COMMAND ----------
 
