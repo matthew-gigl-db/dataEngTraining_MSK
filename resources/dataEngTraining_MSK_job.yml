@@ -14,16 +14,22 @@ resources:
           - odl_instructor_1452233@databrickslabs.com
 
       tasks:
-        - task_key: notebook_task
-          job_cluster_key: job_cluster
-          notebook_task:
-            notebook_path: ../src/notebook.py
-        
-        - task_key: refresh_pipeline
-          depends_on:
-            - task_key: notebook_task
+        - task_key: bronze-dlt
           pipeline_task:
-            pipeline_id: ${resources.pipelines.dataEngTraining_MSK_pipeline.id}
+            pipeline_id: ${resources.pipelines.pipeline_msk_training_dlt_bronze.id}
+            full_refresh: false
+        - task_key: ddl-dlt
+          depends_on:
+            - task_key: bronze-dlt
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.pipeline_msk_training_dlt_ddl.id}
+            full_refresh: false
+        - task_key: silver-dlt
+          depends_on:
+            - task_key: ddl-dlt
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.pipeline_msk_training_dlt_silver.id}
+
         
       job_clusters:
         - job_cluster_key: job_cluster
@@ -33,3 +39,7 @@ resources:
             autoscale:
                 min_workers: 1
                 max_workers: 4
+
+      
+      queue:
+        enabled: true

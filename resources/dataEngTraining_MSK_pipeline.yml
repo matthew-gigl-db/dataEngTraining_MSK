@@ -4,7 +4,7 @@ resources:
     pipeline_msk_training_dlt_bronze:
       name: msk-training-dlt-bronze
       configuration:
-        bundle.catalog: mgiglia
+        bundle.catalog: ${var.catalog}
         bundle.sourcePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/src
         bundle.fixturePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/fixtures
       clusters:
@@ -21,13 +21,13 @@ resources:
       development: true
       photon: true
       channel: PREVIEW
-      catalog: mgiglia
+      catalog: ${var.catalog}
       data_sampling: false
 
     pipeline_msk_training_dlt_ddl:
       name: msk-training-dlt-ddl
       configuration:
-        bundle.catalog: mgiglia
+        bundle.catalog: ${var.catalog}
         bundle.sourcePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/src
         bundle.fixturePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/fixtures
       clusters:
@@ -43,13 +43,13 @@ resources:
       development: true
       photon: true
       channel: PREVIEW
-      catalog: mgiglia
+      catalog: ${var.catalog}
       data_sampling: false
 
     pipeline_msk_training_dlt_silver:
       name: msk-training-dlt-silver
       configuration:
-        bundle.catalog: mgiglia
+        bundle.catalog: ${var.catalog}
         bundle.sourcePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/src
         bundle.fixturePath: /Workspace/Users/odl_instructor_1452233@databrickslabs.com/dataEngTraining_MSK/fixtures
       clusters:
@@ -65,7 +65,7 @@ resources:
       development: true
       photon: true
       channel: PREVIEW
-      catalog: mgiglia
+      catalog: ${var.catalog}
       data_sampling: false
 
 
