@@ -21,9 +21,9 @@ resources:
         - task_key: ddl-dlt
           depends_on:
             - task_key: bronze-dlt
-          pipeline_task:
-            pipeline_id: ${resources.pipelines.pipeline_msk_training_dlt_ddl.id}
-            full_refresh: false
+          # pipeline_task:
+          #   pipeline_id: ${resources.pipelines.pipeline_msk_training_dlt_ddl.id}
+          #   full_refresh: false
         - task_key: silver-dlt
           depends_on:
             - task_key: ddl-dlt
